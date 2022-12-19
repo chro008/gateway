@@ -1,0 +1,37 @@
+server:
+  port: 18000
+
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      httpclient:
+        pool:
+          type: DISABLED
+      discovery:
+        locator:
+          enabled: true
+    nacos:
+      config:
+        server-addr: ${NACOS_SERVER_ADDR:10.142.52.85:18848/nacos}
+        namespace: ${NACOS_NAMESPACE:0ddafa6b-af9c-4d0f-b81c-fda89c8f8481}
+        group: ${NACOS_GROUP:ET}
+        username: ${NACOS_USERNAME:nacos}
+        password: ${NACOS_PASSWORD:nacos}
+        context-path:
+      discovery:
+        server-addr: ${NACOS_SERVER_ADDR:10.142.52.85:18848/nacos}
+        namespace: ${NACOS_NAMESPACE:0ddafa6b-af9c-4d0f-b81c-fda89c8f8481}
+        group: ${NACOS_GROUP:ET}
+        username: ${NACOS_USERNAME:nacos}
+        password: ${NACOS_PASSWORD:nacos}
+        context-path:
+
+gateway:
+  routes:
+    config:
+      data-id: gateway-routes
+      group: ET
+      namespace: ${NACOS_NAMESPACE:0ddafa6b-af9c-4d0f-b81c-fda89c8f8481}
